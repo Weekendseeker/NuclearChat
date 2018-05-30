@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public interface iConnection {
 
-    public void receiveMSG(User connection, Message message);
-    public void connectionReady(User user) throws IOException, InterruptedException;
+    public void receiveMSG(Connection connection, Message message);
+    public void connectionReady(Connection connection) throws IOException, InterruptedException;
 
 }

@@ -7,7 +7,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class User implements  Serializable {
+public class Connection implements  Serializable {
 
         //private static int uid;
         private String name;
@@ -24,7 +24,7 @@ public class User implements  Serializable {
 
 
 
-        public User(iConnection iConnection ,Socket socket) throws IOException {
+        public Connection(iConnection iConnection , Socket socket) throws IOException {
             this.socket=socket;
             this.inetAddress=socket.getInetAddress();
             this.iConnection=iConnection;
@@ -35,12 +35,12 @@ public class User implements  Serializable {
                 public synchronized void run() {
                     try {
                         try {
-                            iConnection.connectionReady(User.this);
+                            iConnection.connectionReady(Connection.this);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         while (!rxThread.isInterrupted()){
-                                iConnection.receiveMSG(User.this,(Message) input.readObject());
+                                iConnection.receiveMSG(Connection.this,(Message) input.readObject());
                                 socket.close();
                         }
                     } catch (IOException e) {

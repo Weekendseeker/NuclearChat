@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Server implements iConnection {
 
     private ServerSocket socket;
-    private ConcurrentHashMap<User, IChat> map;
+    private ConcurrentHashMap<Connection, IChat> map;
 
     private Socket userSocket;
 
@@ -26,7 +26,7 @@ public class Server implements iConnection {
     private Runnable listener = () -> {
         try {
             while (true) {
-                new User(this, socket.accept());
+                new Connection(this, socket.accept());
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -53,12 +53,12 @@ public class Server implements iConnection {
 
 
     @Override
-    public synchronized void receiveMSG(User connection, Message message) {
+    public synchronized void receiveMSG(Connection connection, Message message) {
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Map.Entry<User, IChat> entry : map.entrySet()) {
+                for (Map.Entry<Connection, IChat> entry : map.entrySet()) {
                     if (entry.getKey().getInetAddress().equals(connection.getInetAddress())) {
                         entry.getValue().receive(message);
                     }
@@ -68,8 +68,8 @@ public class Server implements iConnection {
     }
 
     @Override
-    public synchronized void connectionReady(User user) {
-        userSocket = user.getSocket();
+    public synchronized void connectionReady(Connection connection) {
+        userSocket = connection.getSocket();
         System.out.println(userSocket.getInetAddress() + " " + "Подключён");
         if (!map.isEmpty()) {
 
@@ -77,22 +77,22 @@ public class Server implements iConnection {
                 else {
 
                     iChat = handler.receive(new userInfo(userSocket.getInetAddress()));
-                    map.put(user, iChat);
+                    map.put(connection, iChat);
 
-                    System.out.println("Добавлен" + user.getSocket().getPort());
+                    System.out.println("Добавлен" + connection.getSocket().getPort());
                 }
         }else{
 
         iChat = handler.receive(new userInfo(userSocket.getInetAddress()));
-        map.put(user, iChat);
+        map.put(connection, iChat);
         System.out.println(map.toString());
     }
 }
 
 
     public boolean isCreate(Socket socket){
-        for (User user : map.keySet()) {
-            if (user.getInetAddress().equals(socket.getInetAddress())) return true;
+        for (Connection connection : map.keySet()) {
+            if (connection.getInetAddress().equals(socket.getInetAddress())) return true;
         }
         return false;
     }

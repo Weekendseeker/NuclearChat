@@ -1,0 +1,23 @@
+#inputText .content{
+    -fx-background-color:transparent;
+    //-fx-background-radius:15;
+
+}
+
+#inputText {
+   -fx-background-color:transparent;
+   //-fx-background-radius:15;
+
+   -fx-border-color:transparent;
+   -fx-border-radius:15;
+
+}
+#inputText .scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
+
+#textBack{
+    -fx-background-color:#c7c7c7;
+    -fx-background-radius:15;
+}

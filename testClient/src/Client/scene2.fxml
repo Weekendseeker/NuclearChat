@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Scene2Controller">
+   <children>
+      <HBox>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="ip" layoutX="26.0" layoutY="14.0" />
+               </children>
+            </AnchorPane>
+            <VBox prefHeight="416.0" prefWidth="372.0" style="-fx-background-color: lightblue;" HBox.hgrow="SOMETIMES">
+               <children>
+                  <AnchorPane prefHeight="194.0" prefWidth="372.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="contentViewer" fitToHeight="true" fitToWidth="true" prefHeight="368.0" prefWidth="372.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #FEF8CD;">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <children>
+                                    <VBox fx:id="chatBox" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="15.0" style="-fx-border-radius: 202;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                                       <opaqueInsets>
+                                          <Insets top="5.0" />
+                                       </opaqueInsets>
+                                       <effect>
+                                          <DropShadow color="#323232" spread="0.06" />
+                                       </effect>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="msgInterface" minHeight="25.0" prefHeight="38.0" prefWidth="362.0" VBox.vgrow="SOMETIMES">
+                     <children>
+                        <Button layoutX="277.0" layoutY="8.0" mnemonicParsing="false" onAction="#SendMessage" prefHeight="25.0" prefWidth="51.0" style="-fx-border-color: #778899; -fx-background-color: #778899; -fx-border-style: dashed; -fx-border-width: 0;" text="Send" textFill="#ff8622" textOverrun="WORD_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="MS Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="ta1" layoutX="36.0" layoutY="5.0" onDragDropped="#dragDropp" onDragExited="#dragExited" onDragOver="#dragOver" onKeyReleased="#OnEnter" prefHeight="25.0" prefWidth="266.0" scrollTop="5.0" wrapText="true" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="60.0" />
+                        <MenuButton layoutX="2.0" layoutY="8.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" popupSide="TOP" prefHeight="25.0" prefWidth="25.0" rotate="180.0" text="MenuButton" AnchorPane.bottomAnchor="7.0">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Video" />
+                            <MenuItem mnemonicParsing="false" text="Audio" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

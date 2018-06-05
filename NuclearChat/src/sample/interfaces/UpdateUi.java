@@ -2,9 +2,7 @@ package sample.interfaces;
 
 import javafx.scene.control.Label;
 
-import java.awt.*;
-
-public interface updateUi {
+public interface UpdateUi {
 
     void update(Label label);
 

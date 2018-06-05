@@ -11,8 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.input.MouseEvent;
 
 public class userView extends HBox {
+
+    /**Класс отображение контанка */
+
+
 
     @FXML private Label username;
     @FXML private Button Button;
@@ -22,7 +27,6 @@ public class userView extends HBox {
     private chatView chatView;
     private IChat chat;
     private userInfo user;
-
 
     public userView(){}
 
@@ -47,9 +51,10 @@ public class userView extends HBox {
         }
         username.setText(user.getInetAddress().toString());
 
-        this.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
+        //При нажатие на контакт переключить чат
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
+            public void handle(MouseEvent event) {
                 switchChat.switchChat(chatView);
             }
         });

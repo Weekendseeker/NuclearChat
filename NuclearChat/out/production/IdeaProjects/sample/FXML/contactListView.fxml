@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefHeight="49.0" prefWidth="188.0" style="-fx-background-color: #F3E19E;" type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle fx:id="avatar" radius="21.0" stroke="#f3e19e" strokeType="INSIDE">
+         <HBox.margin>
+            <Insets left="3.0" top="3.0" />
+         </HBox.margin>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.32857142857142857" startY="0.1523809523809524">
+               <stops>
+                  <Stop color="#a1aba1" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <DropShadow height="15.07" radius="5.5525" width="9.14" />
+         </effect>
+      </Circle>
+
+      <Label fx:id="username" text="userName">
+         <HBox.margin>
+            <Insets left="20.0" top="14.0" />
+         </HBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <!--<Button fx:id="Button" onAction="#action" mnemonicParsing="false" text="Button" />-->
+   </children>
+</fx:root>
